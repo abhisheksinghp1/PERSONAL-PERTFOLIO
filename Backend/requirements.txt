@@ -6,6 +6,7 @@ uvicorn==0.32.1
 # Database
 aiosqlite==0.20.0          # SQLite for local development
 asyncpg==0.30.0            # PostgreSQL for production
+psycopg2-binary==2.9.9     # PostgreSQL adapter
 sqlalchemy[asyncio]==2.0.36  # ORM with async support
 
 # Data validation — use versions with pre-built wheels for Python 3.11
