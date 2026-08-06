@@ -1,23 +1,6 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "portfolio-frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "portfolio-frontend/$1"
-    }
-  ],
   "buildCommand": "cd portfolio-frontend && npm install && npm run build",
-  "devCommand": "cd portfolio-frontend && npm run dev",
-  "installCommand": "cd portfolio-frontend && npm install",
   "outputDirectory": "portfolio-frontend/dist",
+  "installCommand": "cd portfolio-frontend && npm install",
   "framework": "vite"
 }
