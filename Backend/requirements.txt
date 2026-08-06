@@ -4,7 +4,9 @@ starlette==0.41.3
 uvicorn==0.32.1
 
 # Database
-aiosqlite==0.20.0
+aiosqlite==0.20.0          # SQLite for local development
+asyncpg==0.30.0            # PostgreSQL for production
+sqlalchemy[asyncio]==2.0.36  # ORM with async support
 
 # Data validation — use versions with pre-built wheels for Python 3.11
 pydantic==2.10.3
@@ -32,6 +34,9 @@ h11==0.16.0
 httptools==0.6.4
 watchfiles==1.0.5
 websockets==14.2
+
+# Security
+passlib[bcrypt]==1.7.4
 
 # Utilities
 click==8.1.8

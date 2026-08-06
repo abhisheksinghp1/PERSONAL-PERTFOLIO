@@ -62,6 +62,7 @@ function ResumeImages({ isAdmin, authFetch }) {
   const fetch_ = useCallback(async () => {
     try {
       const res = await fetch(`${API}/api/resume-media/images`)
+      
       if (res.ok) setImages(await res.json())
     } catch { /* ignore */ }
     finally { setLoading(false) }
