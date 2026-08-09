@@ -13,9 +13,9 @@ class Settings(BaseSettings):
     # JWT secret — change this to a long random string in production
     secret_key: str = "change-me-to-a-long-random-secret-key-in-production"
 
-    # Admin credentials — set in .env, no defaults in code
-    admin_username: str = ""
-    admin_password: str = ""
+    # Admin credentials — defaults provided, override in .env for production
+    admin_username: str = "admin"
+    admin_password: str = "admin123"
     cors_origin: str = "*" 
 
     class Config:
