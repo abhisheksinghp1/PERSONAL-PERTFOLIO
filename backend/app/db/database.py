@@ -9,7 +9,14 @@ USE_POSTGRES = DATABASE_URL.startswith("postgres://") or DATABASE_URL.startswith
 
 # If DATA_DIR is set (e.g. Render persistent disk at /data), use it.
 # Otherwise fall back to the local backend/ folder (dev mode).
-_BASE = Path(os.getenv("DATA_DIR", str(Path(__file__).parent.parent.parent)))
+# On Render without persistent disk, use /tmp for uploads
+_data_dir = os.getenv("DATA_DIR")
+if _data_dir:
+    _BASE = Path(_data_dir)
+elif os.getenv("RENDER"):  # Running on Render without DATA_DIR
+    _BASE = Path("/tmp")
+else:  # Local development
+    _BASE = Path(__file__).parent.parent.parent
 
 # File storage paths (same for both SQLite and PostgreSQL)
 DB_PATH      = _BASE / "portfolio.db"

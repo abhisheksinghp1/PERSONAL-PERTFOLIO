@@ -35,9 +35,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount static files
-app.mount("/uploads/gallery", StaticFiles(directory=str(GALLERY_DIR)), name="gallery")
-app.mount("/uploads/skill_images", StaticFiles(directory=str(SKILL_IMAGES_DIR)), name="skill_images")
+# Mount static files (only if directories exist)
+if GALLERY_DIR.exists():
+    app.mount("/uploads/gallery", StaticFiles(directory=str(GALLERY_DIR)), name="gallery")
+if SKILL_IMAGES_DIR.exists():
+    app.mount("/uploads/skill_images", StaticFiles(directory=str(SKILL_IMAGES_DIR)), name="skill_images")
 
 # API routes
 app.include_router(api_router, prefix="/api")
