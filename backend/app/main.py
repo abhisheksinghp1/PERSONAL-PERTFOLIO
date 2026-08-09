@@ -25,19 +25,11 @@ app = FastAPI(
 )
 
 # CORS
-cors_origins_str = os.getenv("CORS_ORIGINS", "") 
-if cors_origins_str:
-    try:
-        import json
-        allowed_origins = json.loads(cors_origins_str)
-    except:
-        allowed_origins = ["*"]
-else:
-    allowed_origins = ["*"]
+from app.config import settings
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+    allow_origins=[settings.cors_origin] if settings.cors_origin != "*" else ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     # Admin credentials — set in .env, no defaults in code
     admin_username: str = ""
     admin_password: str = ""
-    cors_origin: str 
+    cors_origin: str = "*" 
 
     class Config:
         env_file = ".env"
