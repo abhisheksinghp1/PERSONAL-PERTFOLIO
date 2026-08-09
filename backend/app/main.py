@@ -25,7 +25,7 @@ app = FastAPI(
 )
 
 # CORS
-cors_origins_str = os.getenv("CORS_ORIGINS", "")
+cors_origins_str = os.getenv("CORS_ORIGINS", "") 
 if cors_origins_str:
     try:
         import json
