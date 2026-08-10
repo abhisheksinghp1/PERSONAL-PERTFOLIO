@@ -40,9 +40,11 @@ if USE_POSTGRES:
     from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
     from sqlalchemy import text
     
-    # Convert postgres:// to postgresql+asyncpg://
+    # Convert postgres:// or postgresql:// to postgresql+asyncpg://
     if DATABASE_URL.startswith("postgres://"):
         PG_URL = DATABASE_URL.replace("postgres://", "postgresql+asyncpg://", 1)
+    elif DATABASE_URL.startswith("postgresql://") and "+asyncpg" not in DATABASE_URL:
+        PG_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
     else:
         PG_URL = DATABASE_URL
     
